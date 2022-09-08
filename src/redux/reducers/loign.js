@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  REFRESH_ACCESSTOKEN,
 } from "../actions/types";
 
 const initialState = {
@@ -34,6 +35,12 @@ function loginReducer(state = initialState, action) {
         isLoading: false,
         errorMessage: payload.errorMsg,
       };
+    case REFRESH_ACCESSTOKEN:
+      return {
+        ...state,
+        userInfo: payload.userInfo,
+        accessToken: payload.accessToken,
+      }
     default:
       return state;
   }

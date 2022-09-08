@@ -24,7 +24,7 @@ const Login = () => {
           <LoginForm setShowRegister={setShowRegister} />
           <Link className="w-[22rem] block text-center p-4 cursor-pointer" to="/">
             <span className="font-bold text-md w-80">Create a page</span>
-            <sapn className="text-md"> for a celebrity, brand or business </sapn>
+            <span className="text-md"> for a celebrity, brand or business </span>
           </Link>
         </div>
       </div>
