@@ -3,6 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   REFRESH_ACCESSTOKEN,
+  VERIFY_ACCOUNT,
 } from "../actions/types";
 
 const initialState = {
@@ -40,7 +41,15 @@ function loginReducer(state = initialState, action) {
         ...state,
         userInfo: payload.userInfo,
         accessToken: payload.accessToken,
-      }
+      };
+    case VERIFY_ACCOUNT:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          verified: payload.verified,
+        },
+      };
     default:
       return state;
   }

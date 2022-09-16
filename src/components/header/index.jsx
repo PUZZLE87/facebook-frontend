@@ -32,10 +32,10 @@ const Header = () => {
   });
   useClickOutside(userMenuRef, () => {
     setShowUserMenu(false);
-  })
+  });
 
   return (
-    <div className="w-full bg-white shadow-md fixed top-0 left-0 h-14">
+    <div className="w-full bg-white shadow-md z-50 fixed top-0 left-0 h-14">
       <div className="relative h-full flex items-center justify-between">
         {/** Header Left **/}
         <div className="flex items-center space-x-1 px-3 h-full ">
@@ -138,8 +138,9 @@ const Header = () => {
           <div ref={AllMenuRef}>
             <div
               onClick={() => setShowAllMenu((prev) => !prev)}
-              className={`bg-gray-200 p-1 flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-300 transition-colors rounded-full ${showAllMenu && "bg-blue-100"
-                }`}
+              className={`bg-gray-200 p-1 flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-300 transition-colors rounded-full ${
+                showAllMenu && "bg-blue-100"
+              }`}
             >
               <Menu color={showAllMenu && "#1b74e4"} />
             </div>
@@ -159,13 +160,15 @@ const Header = () => {
             </div>
           </div>
           <div className="relative" ref={userMenuRef}>
-            <div onClick={() => setShowUserMenu(prev => !prev)} className={`bg-gray-200 p-1 flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-300 transition-colors rounded-full ${showUserMenu && "bg-blue-100"}`}>
+            <div
+              onClick={() => setShowUserMenu((prev) => !prev)}
+              className={`bg-gray-200 p-1 flex items-center justify-center w-10 h-10 cursor-pointer hover:bg-gray-300 transition-colors rounded-full ${
+                showUserMenu && "bg-blue-100"
+              }`}
+            >
               <ArrowDown color={showUserMenu && "#1b74e4"} />
             </div>
-            {showUserMenu && (
-
-              <UserMenu />
-            )}
+            {showUserMenu && <UserMenu />}
           </div>
         </div>
       </div>
