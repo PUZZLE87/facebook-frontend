@@ -7,15 +7,22 @@ import {
   MoonIcon,
   ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/solid";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SettingPrivacy from "./SettingPrivacy";
 import HelpSupport from "./HelpSupport";
 import DisplayAccessibility from "./DisplayAccessibility";
+import logoutAction from "../../../redux/actions/logoutAction";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 const UserMenu = () => {
   const user = useSelector((state) => state?.user);
   const [visible, setVisible] = useState(0);
+  const dispatch = useDispatch();
+  const axiosPrivate = useAxiosPrivate();
 
+  const handleLogout = () => {
+    dispatch(logoutAction(axiosPrivate));
+  };
   return (
     <div className="absolute top-12 p-4 w-80 lg:w-96 right-2 shadow-lg bg-white rounded-lg overflow-hidden">
       {visible === 0 && (
@@ -92,7 +99,10 @@ const UserMenu = () => {
               <ChevronRightIcon />
             </div>
           </div>
-          <div className="flex justify-between px-3 py-2 cursor-pointer hover:bg-gray-200 transition-colors rounded-lg">
+          <div
+            onClick={handleLogout}
+            className="flex justify-between px-3 py-2 cursor-pointer hover:bg-gray-200 transition-colors rounded-lg"
+          >
             <div className="flex items-center space-x-3">
               <div className="w-10 p-2 bg-gray-100 rounded-full">
                 <ArrowLeftOnRectangleIcon />

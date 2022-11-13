@@ -4,6 +4,9 @@ import {
   LOGIN_FAIL,
   REFRESH_ACCESSTOKEN,
   VERIFY_ACCOUNT,
+  LOGOUT_FAIL,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
 } from "../actions/types";
 
 const initialState = {
@@ -17,6 +20,7 @@ function loginReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case LOGIN_REQUEST:
+    case LOGOUT_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -28,7 +32,8 @@ function loginReducer(state = initialState, action) {
         isLoading: false,
         errorMessage: null,
       };
-
+    case LOGOUT_SUCCESS:
+      return initialState;
     case LOGIN_FAIL:
       return {
         userInfo: null,
@@ -49,6 +54,12 @@ function loginReducer(state = initialState, action) {
           ...state.userInfo,
           verified: payload.verified,
         },
+      };
+    case LOGOUT_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: payload.errorMessage,
       };
     default:
       return state;
