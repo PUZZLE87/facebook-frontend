@@ -107,11 +107,20 @@ const AllMenu = () => {
             <div className="md:fixed md:right-16 md:top-[110px] bg-white p-3 h-fit space-y-1 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold">Create</h3>
               {create.map((item, index) => (
-                <div key={index} className="flex md:w-[140px] hover:bg-gray-200 transition-colors cursor-pointer items-center h-12 rounded-lg space-x-4">
+                <div
+                  key={index}
+                  className="flex md:w-[140px] hover:bg-gray-200 transition-colors cursor-pointer items-center h-12 rounded-lg space-x-4"
+                >
                   <div className="w-9 h-9 p-2 bg-gray-100 rounded-full">
-                    <img src={`./assets/icons/${item.icon}.png`} alt="" className="object-cover" />
+                    <img
+                      src={`/assets/icons/${item.icon}.png`}
+                      alt=""
+                      className="object-cover"
+                    />
                   </div>
-                  <span className="text-md font-semibold text-gray-900">{item.name}</span>
+                  <span className="text-md font-semibold text-gray-900">
+                    {item.name}
+                  </span>
                 </div>
               ))}
             </div>

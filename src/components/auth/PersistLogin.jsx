@@ -4,12 +4,13 @@ import newAccessTokenAction from "../../redux/actions/newAccessToken";
 import { useEffect } from "react";
 import BLoader from "../ui/BarLoader";
 
-const PersistLogin = () => {
+const PersisLogin = () => {
   const user = useSelector((state) => state.user);
   const newAccessToken = useSelector((state) => state.newAccessToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(user);
     if (!user?.accessToken) dispatch(newAccessTokenAction());
   }, []);
 
@@ -21,5 +22,4 @@ const PersistLogin = () => {
     </>
   );
 };
-
-export default PersistLogin;
+export default PersisLogin;

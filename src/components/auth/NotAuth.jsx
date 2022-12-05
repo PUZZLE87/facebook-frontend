@@ -10,6 +10,7 @@ const NotAuth = () => {
   useEffect(() => {
     if (!user?.accessToken) dispatch(newAccessTokenAction());
   }, []);
+
   return user?.accessToken ? <Navigate to="/" /> : <Outlet />;
 };
 
