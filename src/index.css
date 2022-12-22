@@ -2,44 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-
-body {
+* {
   margin: 0;
-  font-family:'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.lazyImage span {
+  width: 100%;
+  height: 100%;
 }
-
+.lazyImage span img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 
 @layer base {
   body {
-    @apply bg-gray-200
+    @apply bg-gray-200;
   }
 }
 
 @layer components {
   .textInput {
-    @apply ring-1 rounded-lg text-gray-600 font-normal text-lg px-4 py-3 w-full border-none bg-gray-100
+    @apply ring-1 rounded-lg text-gray-600 font-normal text-lg px-4 py-3 w-full  border-none bg-gray-100;
   }
-
-  .errorInfo {
-    @apply text-red-600 w-7 absolute top-1/2 -translate-y-1/2 right-2 drop-shadow-[0_5px_6px_rgba(220,38,38,0.65)]
+  .blue-btn {
+    @apply block p-3 bg-blue-600 w-full rounded-lg font-bold text-xl text-gray-200 hover:bg-blue-700 transition-colors;
   }
-
- .blue-btn {
-    @apply block p-3 bg-blue-600 w-full rounded-lg font-bold text-xl text-gray-200 hover:bg-blue-700 transition-colors
+  .divider {
+    @apply h-[0.05rem] bg-gray-200 w-full;
   }
- .divider {
-    @apply h-[0.05rem] bg-gray-200 w-full
-  } 
   .green-btn {
-    @apply px-12 py-3 m-auto inline-block text-lg font-bold bg-green-600 rounded-lg text-gray-100 hover:bg-green-700 transition-colors shadow-green-600 shadow-2xl hover:shadow-none
+    @apply px-12 py-3 m-auto inline-block text-lg font-bold bg-green-600 rounded-lg text-gray-100 hover:bg-green-700 transition-colors  shadow-green-600 shadow-2xl hover:shadow-none;
+  }
+  .errorInfo {
+    @apply text-red-600 w-7  absolute top-1/2 -translate-y-1/2 right-2 drop-shadow-[0_5px_6px_rgba(220,38,38,0.65)];
   }
 }

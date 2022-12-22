@@ -1,4 +1,4 @@
-import { useFormik, useFormikContext } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import ErrorMessage from "./ErrorMessage";
 import useScreenSize from "../../hooks/screenSize";
@@ -11,15 +11,15 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/solid";
 
-const RegisterForm = ({ setShowRegister }) => {
+// register a new user form
+const RegisterForm = ({ showRegister }) => {
   const { isLG } = useScreenSize();
   const register = useSelector((state) => state.register);
   const dispatch = useDispatch();
-
   const registerValidation = Yup.object({
     first_name: Yup.string()
       .required("What's your first name?")
-      .min(4, "Must be at least 4 characters"),
+      .min(4, " Must be at least 4 characters"),
     last_name: Yup.string()
       .required("What's your last name?")
       .min(4, "Must be at least 4 characters"),
@@ -30,12 +30,12 @@ const RegisterForm = ({ setShowRegister }) => {
       .email("Invalid email address"),
     password: Yup.string()
       .required(
-        "Enter a combination of at least eigth numbers, letters and punctuation marks (such as ! and &,@,%)"
+        "Enter a combination of alt least eight numbers, letters and punctuation marks (such as ! and &,@)"
       )
       .min(8)
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        "Password must contain uppercase, number and special character"
+        "password must contain uppercase, lowercase, number and  special character"
       ),
   });
 
@@ -70,25 +70,29 @@ const RegisterForm = ({ setShowRegister }) => {
   const days = Array.from(new Array(getDays()), (_, index) => 1 + index);
 
   return (
-    <div className="bg-white rounded-md m-4 p-4">
+    <div className="bg-white rounded-md m-4  p-4">
       <BarLoader isLoading={register?.isLoading} />
       <div className="w-[22rem]">
         <div className="flex justify-between items-center mb-2 px-2">
-          <h2 className="text-[2rem] font-bold text-gray-600">Sign Up</h2>
-          <span onClick={() => setShowRegister(false)} className="cursor-pointer hover:bg-red-200 transition-colors bg-gray-200 rounded-full">
-            <XMarkIcon className="w-6 p-1 transition-colors text-red-400 hover:text-red-600" />
+          <h2 className="text-[2rem] font-bold text-gray-600 ">Sign Up</h2>
+          <span
+            className="cursor-pointer hover:bg-red-200 transition-colors bg-gray-200 rounded-full "
+            onClick={() => showRegister(false)}
+          >
+            <XMarkIcon className="w-6 p-1 transition-colors text-red-400   hover:text-red-600" />
           </span>
         </div>
         <div className="divider"></div>
         <form className="p-2 mt-2 space-y-3" onSubmit={formik.handleSubmit}>
           <div className="space-y-3 lg:space-y-0 lg:space-x-3 lg:flex lg:items-center lg:justify-between">
-            <div className={`${isLG ? "" : "space-y-4"} relative`}>
+            <div className={`${isLG ? "" : "space-y-4"}  relative`}>
               <div className="relative">
                 <input
-                  className={`textInput ${formik.touched.first_name && formik.errors.first_name
-                    ? "ring-red-400"
-                    : ""
-                    }`}
+                  className={`textInput ${
+                    formik.touched.first_name && formik.errors.first_name
+                      ? "ring-red-400"
+                      : ""
+                  } `}
                   id="first_name"
                   name="first_name"
                   onBlur={formik.handleBlur}
@@ -97,12 +101,10 @@ const RegisterForm = ({ setShowRegister }) => {
                   type="text"
                   placeholder="First name"
                 />
-
                 {formik.touched.first_name && formik.errors.first_name ? (
                   <ExclamationCircleIcon className="errorInfo" />
                 ) : null}
               </div>
-
               {formik.touched.first_name && formik.errors.first_name ? (
                 <ErrorMessage
                   message={formik.errors.first_name}
@@ -111,13 +113,14 @@ const RegisterForm = ({ setShowRegister }) => {
                 />
               ) : null}
             </div>
-            <div className={`${isLG ? "" : "space-y-4"} relative`}>
+            <div className={`${isLG ? "" : "space-y-4"}  relative`}>
               <div className="relative">
                 <input
-                  className={`textInput ${formik.touched.last_name && formik.errors.last_name
-                    ? "ring-red-400"
-                    : ""
-                    }`}
+                  className={`textInput ${
+                    formik.touched.last_name && formik.errors.last_name
+                      ? "ring-red-400"
+                      : ""
+                  } `}
                   id="last_name"
                   name="last_name"
                   onBlur={formik.handleBlur}
@@ -126,12 +129,10 @@ const RegisterForm = ({ setShowRegister }) => {
                   type="text"
                   placeholder="Last name"
                 />
-
                 {formik.touched.last_name && formik.errors.last_name ? (
                   <ExclamationCircleIcon className="errorInfo" />
                 ) : null}
               </div>
-
               {formik.touched.last_name && formik.errors.last_name ? (
                 <ErrorMessage
                   message={formik.errors.last_name}
@@ -144,10 +145,11 @@ const RegisterForm = ({ setShowRegister }) => {
           <div className={`${isLG ? "" : "space-y-4"}  relative`}>
             <div className="relative">
               <input
-                className={`textInput ${formik.touched.email && formik.errors.email
-                  ? "ring-red-400"
-                  : ""
-                  } `}
+                className={`textInput ${
+                  formik.touched.email && formik.errors.email
+                    ? "ring-red-400"
+                    : ""
+                } `}
                 id="email"
                 name="email"
                 onBlur={formik.handleBlur}
@@ -171,10 +173,11 @@ const RegisterForm = ({ setShowRegister }) => {
           <div className={`${isLG ? "" : "space-y-4"}  relative`}>
             <div className="relative">
               <input
-                className={`textInput ${formik.touched.password && formik.errors.password
-                  ? "ring-red-400"
-                  : ""
-                  } `}
+                className={`textInput ${
+                  formik.touched.password && formik.errors.password
+                    ? "ring-red-400"
+                    : ""
+                } `}
                 id="password"
                 name="password"
                 onBlur={formik.handleBlur}
@@ -196,9 +199,9 @@ const RegisterForm = ({ setShowRegister }) => {
             ) : null}
           </div>
           <div>
-            <div className="flex space-x-1 items-center">
-              <span className="text-gray-500 text-lg">Data of birth</span>
-              <QuestionMarkCircleIcon className="w-5 text-gray-500" />
+            <div className="flex space-x-1 items-center ">
+              <span className="text-gray-500 text-lg"> Date of birth </span>
+              <QuestionMarkCircleIcon className="w-5 text-gray-500 " />
             </div>
             <div className="flex justify-around mt-2">
               <select
@@ -215,6 +218,7 @@ const RegisterForm = ({ setShowRegister }) => {
                   </option>
                 ))}
               </select>
+
               <select
                 name="bMonth"
                 id="bMonth"
@@ -247,17 +251,17 @@ const RegisterForm = ({ setShowRegister }) => {
           </div>
           <div>
             <div className="text-lg text-gray-500 flex items-center space-x-1">
-              <span>Gender</span>
+              <span> Gender </span>
               <QuestionMarkCircleIcon className="w-5" />
             </div>
             <div className="flex justify-around">
               <label
-                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between"
+                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between "
                 htmlFor="male"
               >
-                male
+                Male
                 <input
-                  className="bg-gra-200 border-2 focus:ring-0"
+                  className="bg-gray-200 border-2 focus:ring-0"
                   type="radio"
                   name="gender"
                   id="male"
@@ -268,12 +272,12 @@ const RegisterForm = ({ setShowRegister }) => {
                 />
               </label>
               <label
-                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between"
+                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between "
                 htmlFor="female"
               >
-                female
+                Female
                 <input
-                  className="bg-gra-200 border-2 focus:ring-0"
+                  className="bg-gray-200 border-2 focus:ring-0"
                   type="radio"
                   name="gender"
                   id="female"
@@ -283,12 +287,12 @@ const RegisterForm = ({ setShowRegister }) => {
                 />
               </label>
               <label
-                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between"
+                className="border-gray-500 w-24 px-2 py-2 rounded-lg border-2 text-gray-500 text-lg flex items-center justify-between "
                 htmlFor="custom"
               >
-                custom
+                Custom
                 <input
-                  className="bg-gra-200 border-2 focus:ring-0"
+                  className="bg-gray-200 border-2 focus:ring-0"
                   type="radio"
                   name="gender"
                   id="custom"
@@ -313,7 +317,7 @@ const RegisterForm = ({ setShowRegister }) => {
           <div className="text-center">
             <button
               disabled={!(formik.isValid && formik.dirty)}
-              className="text-gray-100 bg-green-600 w-44 shadow-green-600 shadow-2xl py-2 text-xl font-semibold rounded-lg hover:shadow-none transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300"
+              className="text-gray-100 bg-green-600 w-44 shadow-green-600 shadow-2xl py-2 text-xl font-semibold rounded-lg hover:shadow-none transition-colors hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 "
               type="submit"
             >
               Sign Up

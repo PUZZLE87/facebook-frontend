@@ -1,4 +1,4 @@
-import { VERIFY_REQUEST, VERIFY_SUCCESS, VERIFY_FAIL } from "../actions/types";
+import { VERIFY_FAIL, VERIFY_REQUEST, VERIFY_SUCCESS } from "../actions/types";
 
 const initialState = {
   isLoading: false,
@@ -24,6 +24,7 @@ function verifyAccountReducer(state = initialState, action) {
         isLoading: false,
         errorMessage: payload.errorMessage,
       };
+
     default:
       return state;
   }

@@ -32,6 +32,7 @@ function registerReducer(state = initialState, action) {
         isRegistered: false,
         errorMessage: payload.errorMessage,
       };
+
     default:
       return state;
   }

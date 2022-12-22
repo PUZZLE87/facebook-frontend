@@ -1,5 +1,5 @@
 import {
-  RESET_SEARCH_REQUEST,
+  RESET_SEARCH_REQUSET,
   RESET_SEARCH_SUCCESS,
   RESET_SEARCH_FAIL,
   RESET_EMAIL_REQUEST,
@@ -7,10 +7,10 @@ import {
   RESET_EMAIL_FAIL,
   RESET_CODE_REQUEST,
   RESET_CODE_SUCCESS,
-  RESET_CODE_FIAL,
+  RESET_CODE_FAIL,
+  RESET_PASSWORD_FAIL,
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FIAL,
   RESET_PASSWORD_CANCEL,
 } from "../actions/types";
 
@@ -27,7 +27,7 @@ function resetPasswordReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case RESET_SEARCH_REQUEST:
+    case RESET_SEARCH_REQUSET:
     case RESET_EMAIL_REQUEST:
     case RESET_CODE_REQUEST:
     case RESET_PASSWORD_REQUEST:
@@ -62,8 +62,8 @@ function resetPasswordReducer(state = initialState, action) {
       return initialState;
     case RESET_SEARCH_FAIL:
     case RESET_EMAIL_FAIL:
-    case RESET_CODE_FIAL:
-    case RESET_PASSWORD_FIAL:
+    case RESET_CODE_FAIL:
+    case RESET_PASSWORD_FAIL:
       return {
         ...state,
         isLoading: false,
@@ -73,5 +73,4 @@ function resetPasswordReducer(state = initialState, action) {
       return state;
   }
 }
-
 export default resetPasswordReducer;

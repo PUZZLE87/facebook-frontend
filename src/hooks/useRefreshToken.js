@@ -1,5 +1,5 @@
 import axios from "../axios/axios";
-import { REFRESH_ACCESSTOKEN } from "../redux/actions/types";
+import { REFRESH_ACCESSTOEKN } from "../redux/actions/types";
 import { useDispatch } from "react-redux";
 
 const useRefreshToken = () => {
@@ -11,8 +11,11 @@ const useRefreshToken = () => {
         withCredentials: true,
       });
       dispatch({
-        type: REFRESH_ACCESSTOKEN,
-        payload: { accessToken: data.accessToken, userInfo: data.userInfo },
+        type: REFRESH_ACCESSTOEKN,
+        payload: {
+          accessToken: data.accessToken,
+          userInfo: data.userInfo,
+        },
       });
       return data?.accessToken;
     } catch (error) {

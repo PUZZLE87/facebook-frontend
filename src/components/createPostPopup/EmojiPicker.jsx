@@ -3,7 +3,7 @@ import { FaceSmileIcon } from "@heroicons/react/24/outline";
 import { useState, useRef, useEffect } from "react";
 import useClickOutside from "../../hooks/useClickOutside";
 
-const EmojiPicker = ({ textRef, setText, text }) => {
+const EmojiPicker = ({ textRef, setText, text, position = "top" }) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const emojiRef = useRef(null);
   const [cursorPosition, setCursorPosition] = useState();
@@ -35,8 +35,14 @@ const EmojiPicker = ({ textRef, setText, text }) => {
         <FaceSmileIcon />
       </div>
       {showEmojiPicker && (
-        <div className="absolute z-40 top-full -translate-x-[90%]  ">
-          <Picker onEmojiClick={handleEmoji} />
+        <div
+          className={`absolute scale-75 z-40  ${
+            position === "top"
+              ? " top-full -translate-y-11 -translate-x-[82%] "
+              : " bottom-full -translate-x-[83%] translate-y-11 "
+          } `}
+        >
+          <Picker width={300} height={360} onEmojiClick={handleEmoji} />
         </div>
       )}
     </div>

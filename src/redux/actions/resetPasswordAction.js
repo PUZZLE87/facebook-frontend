@@ -1,25 +1,24 @@
 import {
-  RESET_SEARCH_REQUEST,
+  RESET_SEARCH_REQUSET,
   RESET_SEARCH_SUCCESS,
   RESET_SEARCH_FAIL,
+  RESET_EMAIL_FAIL,
   RESET_EMAIL_REQUEST,
   RESET_EMAIL_SUCCESS,
-  RESET_EMAIL_FAIL,
+  RESET_CODE_FAIL,
   RESET_CODE_REQUEST,
   RESET_CODE_SUCCESS,
-  RESET_CODE_FIAL,
+  RESET_PASSWORD_FAIL,
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
-  RESET_PASSWORD_FIAL,
   RESET_PASSWORD_CANCEL,
   LOGIN_SUCCESS,
-} from "../actions/types";
-
+} from "./types";
 import axios from "../../axios/axios";
 
 const resetPasswordAction = (email) => async (dispatch) => {
   try {
-    dispatch({ type: RESET_SEARCH_REQUEST });
+    dispatch({ type: RESET_SEARCH_REQUSET });
     const { data } = await axios.post(
       "/user/findUser",
       JSON.stringify({ email }),
@@ -43,7 +42,7 @@ const resetPasswordAction = (email) => async (dispatch) => {
 const resetEmailAction = (email) => async (dispatch) => {
   try {
     dispatch({ type: RESET_EMAIL_REQUEST });
-    await axios("/user/sendResetPasswordCode", JSON.stringify({ email }), {
+    await axios.post("/user/sendResetPasswordCode", JSON.stringify({ email }), {
       withCredentials: true,
       headers: { "Content-Type": "application/json" },
     });
@@ -78,7 +77,7 @@ const resetCodeAction = (email, code) => async (dispatch) => {
     } else {
       errorMessage = error.response?.data?.message;
     }
-    dispatch({ type: RESET_CODE_FIAL, payload: { errorMessage } });
+    dispatch({ type: RESET_CODE_FAIL, payload: { errorMessage } });
   }
 };
 
@@ -95,14 +94,16 @@ const resetPasswordChangeAction =
         }
       );
       dispatch({ type: RESET_PASSWORD_SUCCESS });
+
       const res = await axios.post(
         "/user/auth",
         JSON.stringify({ email, password }),
         {
-          withCredentials: true,
           headers: { "Content-Type": "application/json" },
+          withCredentials: true,
         }
       );
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: {
@@ -117,7 +118,7 @@ const resetPasswordChangeAction =
       } else {
         errorMessage = error.response?.data?.message;
       }
-      dispatch({ type: RESET_PASSWORD_FIAL, payload: { errorMessage } });
+      dispatch({ type: RESET_PASSWORD_FAIL, payload: { errorMessage } });
     }
   };
 

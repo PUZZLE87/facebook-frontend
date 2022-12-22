@@ -1,4 +1,5 @@
 import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL } from "./types";
+
 import axios from "../../axios/axios";
 
 const register = (data) => async (dispatch) => {
@@ -9,6 +10,7 @@ const register = (data) => async (dispatch) => {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     });
+
     dispatch({
       type: REGISTER_SUCCESS,
     });
@@ -19,7 +21,7 @@ const register = (data) => async (dispatch) => {
     } else if (error.response?.status === 400) {
       errorMsg = error?.response?.data?.errors[0]?.msg;
     } else {
-      errorMsg = "Error in registration! please try again";
+      errorMsg = "Error in registeration! Plear trye again";
     }
 
     dispatch({ type: REGISTER_FAIL, payload: { errorMessage: errorMsg } });

@@ -4,7 +4,7 @@ import axios from "../../axios/axios";
 const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
-      type: LOGIN_REQUEST,
+      type: LOGIN_REQUEST
     });
 
     const res = await axios.post(
@@ -15,6 +15,7 @@ const login = (email, password) => async (dispatch) => {
         withCredentials: true,
       }
     );
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: {
@@ -31,9 +32,8 @@ const login = (email, password) => async (dispatch) => {
     } else if (error.response?.status === 401) {
       errorMsg = "Email or password is incorrect";
     } else {
-      errorMsg = "Error in login! Please try again";
+      errorMsg = "Error in login! Please try again"
     }
-
     dispatch({ type: LOGIN_FAIL, payload: { errorMsg } });
   }
 };

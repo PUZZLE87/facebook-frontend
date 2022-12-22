@@ -1,6 +1,6 @@
 import {
   ACCESSTOKEN_REQUEST,
-  ACCESSTOKEN_SUCCESS,
+  ACCEESSTOKEN_SUCCESS,
   ACCESSTOKEN_FAIL,
 } from "../actions/types";
 
@@ -18,7 +18,7 @@ function accessTokenReducer(state = initialState, action) {
         isLoading: true,
         errorMessage: null,
       };
-    case ACCESSTOKEN_SUCCESS:
+    case ACCEESSTOKEN_SUCCESS:
       return {
         isLoading: false,
         errorMessage: null,
@@ -28,11 +28,9 @@ function accessTokenReducer(state = initialState, action) {
         isLoading: false,
         errorMessage: payload.errorMessage,
       };
-
     default:
       return state;
   }
 }
 
-
-export default accessTokenReducer;
+export default accessTokenReducer; 
