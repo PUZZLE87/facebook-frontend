@@ -123,7 +123,7 @@ const Header = () => {
         {/** Header Right **/}
         <div className="flex items-center justify-end pr-3 space-x-1 lg:space-x-4 ">
           <NavLink
-            to="/"
+            to={`/profile/${user?.userInfo?.username}`}
             className="flex justify-center items-center space-x-1  rounded-full transition-colors hover:bg-gray-200 p-1"
           >
             <div className="overflow-hidden sm:flex w-8 border-[1px] hidden  border-gray-100  h-8 rounded-full">

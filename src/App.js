@@ -4,6 +4,7 @@ import PersistLogin from "./components/auth/PersistLogin";
 import Home from "./pages/home";
 import NotAuth from "./components/auth/NotAuth";
 import Reset from "./pages/reset";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route element={<PersistLogin />}>
         <Route path="/activate/:token" element={<Home />} />
         <Route path="/" element={<Home />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Route>
     </Routes>
   );
