@@ -8,6 +8,7 @@ import { GET_PROFILE_CLEAR } from "../../redux/actions/types";
 import BarLoader from "../../components/ui/BarLoader";
 import Cover from "./Cover";
 import OldCovers from "./OldCovers";
+import ProfileInfo from "./ProfileInfo";
 
 const Profile = () => {
   const { username } = useParams();
@@ -35,6 +36,7 @@ const Profile = () => {
           <div className="mt-14 bg-white">
             {profile?.isLoading && <BarLoader />}
             <Cover setShowOldCovers={setShowOldCovers} />
+            <ProfileInfo />
           </div>
           {showOldCovers && <OldCovers setShowOldCovers={setShowOldCovers} />}
         </div>

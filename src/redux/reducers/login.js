@@ -7,6 +7,7 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
+  CHANGE_USER_PICTURE,
 } from "../actions/types";
 
 const initialState = {
@@ -61,6 +62,14 @@ function loginReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         errorMessage: payload.errorMessage,
+      };
+    case CHANGE_USER_PICTURE:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          picture: payload?.picture,
+        },
       };
     default:
       return state;
