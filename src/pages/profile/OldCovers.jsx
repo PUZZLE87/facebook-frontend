@@ -47,7 +47,7 @@ const OldCovers = ({ setShowOldCovers }) => {
   }, []);
 
   return (
-    <div className="bg-white z-30 bg-opacity-90 absolute flex items-center justify-center inset-0">
+    <div className="bg-white z-50 bg-opacity-90 fixed flex items-center justify-center inset-0">
       <div
         ref={showCoversRef}
         className="w-[232px] overflow-hidden sm:w-[336px] lg:w-[440px] text-gray-600 rounded-lg shadow-md bg-white"

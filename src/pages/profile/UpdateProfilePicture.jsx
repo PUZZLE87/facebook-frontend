@@ -85,7 +85,7 @@ const UpdateProfilePicture = ({ setShowUpdateProfile }) => {
   };
 
   return (
-    <div className="absolute z-30 bg-opacity-80 inset-0  bg-white">
+    <div className="fixed z-50 bg-opacity-80 inset-0  bg-white">
       <div className="absolute w-[336px] sm:w-[440px] lg:w-[544px] shadowl-lg rounded-lg bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <div className="flex justify-between p-3">
           <span className="text-lg text-gray-700 font-semibold">

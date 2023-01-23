@@ -8,6 +8,7 @@ import postReducer from "./post";
 import postsReducer from "./posts";
 import getProfileReducer from "./getProfile";
 import setCoverReducer from "./setCover";
+import myPostsReducer from "./myPosts";
 
 export default combineReducers({
   user: loginReducer,
@@ -17,6 +18,7 @@ export default combineReducers({
   resetPassword: resetPasswordReducer,
   post: postReducer,
   posts: postsReducer,
+  myPosts: myPostsReducer,
   profile: getProfileReducer,
   cover: setCoverReducer,
 });

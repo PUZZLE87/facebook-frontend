@@ -5,6 +5,7 @@ import {
   CHANGE_PROFILE_COVER,
   CHANGE_PROFILE_PICTURE,
   GET_PROFILE_CLEAR,
+  CHANGE_PROFILE_DETAILS,
 } from "../actions/types";
 
 const initialState = {
@@ -51,6 +52,17 @@ function getProfileReducer(state = initialState, action) {
         profileInfo: {
           ...state.profileInfo,
           picture: payload?.picture,
+        },
+      };
+    case CHANGE_PROFILE_DETAILS:
+      return {
+        ...state,
+        profileInfo: {
+          ...state.profileInfo,
+          details: {
+            ...state.profileInfo?.details,
+            ...payload.details,
+          },
         },
       };
     default:

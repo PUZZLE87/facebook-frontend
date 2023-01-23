@@ -34,8 +34,13 @@ const ProfileInfo = () => {
             )}
           </span>
         </div>
-        <span className="text-4xl font-semibold text-gray-700">
-          {userProfile?.first_name} {userProfile?.last_name}
+        <span className="text-4xl  flex flex-col font-semibold text-gray-700">
+          <span>
+            {userProfile?.first_name} {userProfile?.last_name}
+          </span>
+          <span className="text-2xl self-center text-gray-500">
+            {userProfile?.details?.otherName}
+          </span>
         </span>
         <div className="flex space-x-2  mt-6 md:grow md:mt-28 justify-end itmes-end">
           <button className="flex items-center justfiy-center space-x-2 bg-blue-600 text-gray-100 px-3 py-1 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer ">
